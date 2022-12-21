@@ -32,7 +32,7 @@ async function run() {
     // get all quize
     app.get("/quize", async (req, res) => {
       const query = {};
-      const result = await allQuizes.find(query).limit(50).toArray();
+      const result = await allQuizes.find(query).toArray();
       const data = [...result].sort(() => 0.5 - Math.random());
       res.send(data);
     });

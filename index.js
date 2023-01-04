@@ -23,7 +23,7 @@ async function run() {
   try {
     const allQuizes = client.db("QuizeDB").collection("allQuize");
     const userInfo = client.db("QuizeDB").collection("userInfo");
-
+    
     // get all quize
     app.get("/quize", async (req, res) => {
       const query = {};
@@ -32,7 +32,18 @@ async function run() {
       res.send(data);
     });
 
+    // get all user info 
+
+    app.get("/alluserinfo", async (req, res) => {
+      const query = {};
+      const result = await userInfo.find(query).toArray();
+      res.send(result);
+    });
+    
+
     // get single userinformation
+
+
 
     app.get("/userinfo", async (req, res) => {
       const email = req.query.email;
